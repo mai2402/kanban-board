@@ -1,3 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    @apply bg-blue-50;
+  }
+  
+  /* Custom scrollbar styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thumb-blue-500 {
+    scrollbar-color: #4299e1 #ebf8ff;
+  }
+  
+  .scrollbar-track-blue-100 {
+    background: #ebf8ff;
+  }
+
+ 
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+
+.header {
+    background: #456C86;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #263B4A;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.features-section {
+    background: #f9f9f9;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature {
+    width: 250px;
+    margin: 20px;
+}
+
+.feature img {
+    max-width: 100%;
+    height: auto;
+}
+
+.how-it-works-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.step {
+    width: 200px;
+    margin: 20px;
+}
+
+.footer {
+    background: #263B4A;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
