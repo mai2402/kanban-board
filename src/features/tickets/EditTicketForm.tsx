@@ -3,19 +3,20 @@ import { useForm } from "react-hook-form"
 import { validationSchema } from "../../validationSchema/TicketValidationSchema";
 import { useEditTicket } from "../../hooks/tickets/useEditTicket";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Ticket } from "../../types/Tickets";
 
+interface FormProps {
+  onClose: () => void;
+  ticket :Ticket;
+}
 
-
-export default function EditTicketForm() {
- const location = useLocation()
- const {state} = location
- const {ticket} = state|| {};
+export default function EditTicketForm({ticket,onClose}:FormProps) {
+  console.log(ticket,"ana el ticket")
   const {register, handleSubmit, formState:{errors},reset}= useForm({ 
     resolver :yupResolver(validationSchema),
     mode:"onChange",
   })
-  const navigate = useNavigate()
+
  const {editTicket,isEditing}= useEditTicket()
 
   useEffect(() => {
@@ -27,8 +28,10 @@ export default function EditTicketForm() {
  
     
   function onSubmitForm(data:any){
+  
      if (ticket?.id)
         editTicket({ ticketId:ticket.id ,editedTicketData:data })
+         onClose();
   }
   return (   
     <form
@@ -119,7 +122,7 @@ export default function EditTicketForm() {
         >
         {isEditing ? "...Saving" : "Save"}
       </button>
-      <button onClick={()=>navigate("/kanban")} 
+      <button onClick={onClose}
             className="w-1/2 m-3 py-2 px-4 rounded-md text-white font-semibold bg-gray-400">
                 Cancel
             </button>

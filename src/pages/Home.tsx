@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 function Home() {
+ 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header Section */}

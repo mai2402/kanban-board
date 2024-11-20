@@ -30,7 +30,7 @@ function Kanbanboard() {
 
  
       function handleDragEnd({over: targetColumn, active: draggedTicket}: DragEndEvent) {
-      
+        
         if (targetColumn?.id && draggedTicket.id) {
              // Update ticket status
         const ticketId = draggedTicket.id;
