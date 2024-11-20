@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export function useCreateTicket (){
     const queryClient = useQueryClient();
-    const navigate = useNavigate()
+    
     const {mutate: createTicket,isPending:isAdding }= useMutation({
 
             mutationFn:createTicketApi,  
@@ -15,7 +15,7 @@ export function useCreateTicket (){
                 queryClient.invalidateQueries({
                     queryKey:["tickets"]
                 })
-                 navigate(-1)
+                
             },
             onError:(err)=>{
                 toast.error(err.message)

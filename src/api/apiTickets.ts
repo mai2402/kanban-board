@@ -29,19 +29,42 @@ const { data, error } = await supabase
 
 return data;
 }
-
 export async function editTicket (id:string,editedTicket: Partial<Ticket> ){
+
+  const { data, error } = await supabase
+    .from('tickets')
+    .update({editedTicket})
+    .eq('id', id)
+    .select();
+  
+    if (error){
+      console.error(error)
+      throw new Error("ticket could not be edited ")
+  }
+  if(!data || data.length === 0 ){
+    throw new Error("No tickets with the provided Id")
+  }
+   
+  
+  return data;
+  }
+
+export async function editTicketStatus (id:string,newStatus: Partial<Ticket> ){
 
 const { data, error } = await supabase
   .from('tickets')
-  .update(editedTicket)
+  .update({status: newStatus})
   .eq('id', id)
-  .select()
+  .select();
 
   if (error){
     console.error(error)
     throw new Error("ticket could not be edited ")
 }
+if(!data || data.length === 0 ){
+  throw new Error("No tickets with the provided Id")
+}
+ 
 
 return data;
 }

@@ -26,19 +26,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="kanban" element={<Kanbanboard/>}/>
-        <Route path="new-ticket" element={<TicketForm/>}/>
-        <Route path="edit-ticket" element={<EditTicketForm/>}/>
       </Routes>
       </BrowserRouter>
        <Toaster
-        position="top-right"
+        position="top-center"
         reverseOrder={false}
         toastOptions={{
           // Default toast styles
           style: {
             borderRadius: '8px',
-            background: '#333',
-            color: '#fff',
+            background:'white',
+            color: 'black',
           },
         }}
       />

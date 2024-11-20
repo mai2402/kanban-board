@@ -10,7 +10,7 @@ export function useDeleteTicket(){
     const queryClient = useQueryClient()
 
     const { mutate: deleteTicket} = useMutation({
-        mutationFn: deleteTicketApi,
+        mutationFn:(id :string)=> deleteTicketApi(id),
         onSuccess:()=>{
             toast.success("ticket has been deleted successfully"),
             queryClient.invalidateQueries({

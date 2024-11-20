@@ -3,7 +3,12 @@ import { useForm } from "react-hook-form";
 import { validationSchema } from "../../validationSchema/TicketValidationSchema";
 import { useCreateTicket } from "../../hooks/tickets/useCreateTicket";
 
-export default function TicketForm() {
+
+interface FormProps {
+  onClose: () => void;
+}
+
+export default function TicketForm ({ onClose }: FormProps) {
   const {
     register,
     handleSubmit,
@@ -23,6 +28,7 @@ export default function TicketForm() {
       phone: data.phone,
     };
     createTicket(newTicket);
+    onClose();
   }
 
   return (
