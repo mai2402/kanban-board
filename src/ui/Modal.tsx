@@ -1,4 +1,5 @@
 import React from "react";
+import { MdClose } from "react-icons/md";
 
 interface ModalProps {
   isOpen: boolean;
@@ -19,7 +20,7 @@ function Modal({ isOpen, onClose, children, title }:ModalProps){
             onClick={onClose}
             className="text-gray-500 hover:text-black focus:outline-none"
           >
-            ×
+           <MdClose size={24} className="text-gray-600 hover:text-red-500" />
           </button>
         </div>
         <div className="mt-4">{children}</div>

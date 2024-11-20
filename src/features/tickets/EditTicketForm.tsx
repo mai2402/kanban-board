@@ -14,21 +14,22 @@ export default function EditTicketForm({ticket,onClose}:FormProps) {
   console.log(ticket,"ana el ticket")
   const {register, handleSubmit, formState:{errors},reset}= useForm({ 
     resolver :yupResolver(validationSchema),
-    mode:"onChange",
+    mode:"onChange", // runs validation every time a field is modified 
   })
 
  const {editTicket,isEditing}= useEditTicket()
-
+ 
+ // pre-filling form fields with ticket data using reset 
   useEffect(() => {
     if (ticket) {
-      reset(ticket); // Pre-fill the form fields
+      reset(ticket); 
     }
   }, [ticket, reset]);
 
  
     
   function onSubmitForm(data:any){
-  
+  // ensure that edit for a valid ticket then call editTicket
      if (ticket?.id)
         editTicket({ ticketId:ticket.id ,editedTicketData:data })
          onClose();

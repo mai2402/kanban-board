@@ -7,7 +7,8 @@ export const validationSchema = Yup.object().shape({
       .nullable()
       .transform((value, originalValue) => (originalValue === "" ? null : value))
       .required('Age is required')
-      .min(0, 'Age must be a positive number')
+      .min(10, 'Age must be at least 10') 
+      .max(99, 'Age cannot exceed 99')
       .integer('Age must be an integer'),
     email: Yup.string().email('Invalid email format').required('Email is required'),
     phone: Yup.string()

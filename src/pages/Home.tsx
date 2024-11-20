@@ -11,7 +11,7 @@ function Home() {
             Organize Your Workflow with Ease
           </h1>
           <p className="text-lg md:text-xl mb-8">
-            A simple yet effective way to manage your tasks with an interactive Kanban board.
+            A simple yet effective way to manage your tickets with an interactive Kanban board.
           </p>
           <Link
             to="/kanban"
@@ -26,7 +26,7 @@ function Home() {
       <main className="flex-grow flex items-center justify-center px-4">
         <div className="text-center">
           <p className="text-lg md:text-xl text-gray-700">
-            Welcome to your new task management tool. Start organizing your tasks effectively.
+            Welcome to your new ticket management tool. Start organizing your tickets effectively.
           </p>
         </div>
       </main>

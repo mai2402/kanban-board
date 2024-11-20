@@ -16,6 +16,7 @@ export default function TicketCard({ ticket, index }: TicketCardProps) {
     const { deleteTicket } = useDeleteTicket();
     const { openModal, isModalOpen, closeModal } = useModal();
 
+   //dnd-kit hook to make the card a draggable component
     const { attributes, listeners, setNodeRef, isDragging } = useSortable({
         id: ticketId.toString(),
     });
@@ -23,7 +24,7 @@ export default function TicketCard({ ticket, index }: TicketCardProps) {
     return (
         <>
             <div
-                ref={setNodeRef}
+                ref={setNodeRef} // reference to the DOM that will be dragged
                 style={{
                     opacity: isDragging ? 0.5 : 1,
                 }}
@@ -31,12 +32,13 @@ export default function TicketCard({ ticket, index }: TicketCardProps) {
             >
                 {/* Draggable Area */}
                 <div
+                // enabling drag functionality across the component
                     {...listeners} 
                     {...attributes}
+                    className="cursor-move bg-gray-100 p-2 rounded-t-md"
                     style={{
                         cursor: isDragging ? "grabbing" : "grab", // Change cursor dynamically
                     }}
-                    className="cursor-move bg-gray-100 p-2 rounded-t-md"
                 >
                     <span className="text-lg font-semibold text-gray-800">{ticket.title}</span>
                 </div>

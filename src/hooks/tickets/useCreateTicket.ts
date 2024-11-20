@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createTicket as createTicketApi } from "../../api/apiTickets";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+
 
 
 export function useCreateTicket (){
@@ -12,6 +12,7 @@ export function useCreateTicket (){
             mutationFn:createTicketApi,  
             onSuccess :()=>{
                 toast.success("ticket has been created successfully")
+                // invalidate queries upon success to keep the state up to date
                 queryClient.invalidateQueries({
                     queryKey:["tickets"]
                 })

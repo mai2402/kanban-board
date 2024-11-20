@@ -30,10 +30,14 @@ const { data, error } = await supabase
 return data;
 }
 export async function editTicket (id:string,editedTicket: Partial<Ticket> ){
+// to prevent unnecessary or invalid updates
+  if (!editedTicket || Object.keys(editedTicket).length === 0) {
+    throw new Error("No valid fields to update");
+}
 
   const { data, error } = await supabase
     .from('tickets')
-    .update({editedTicket})
+    .update({...editedTicket})
     .eq('id', id)
     .select();
   
@@ -41,6 +45,7 @@ export async function editTicket (id:string,editedTicket: Partial<Ticket> ){
       console.error(error)
       throw new Error("ticket could not be edited ")
   }
+  //validating the returned data
   if(!data || data.length === 0 ){
     throw new Error("No tickets with the provided Id")
   }
@@ -61,6 +66,7 @@ const { data, error } = await supabase
     console.error(error)
     throw new Error("ticket could not be edited ")
 }
+ //validating the returned data
 if(!data || data.length === 0 ){
   throw new Error("No tickets with the provided Id")
 }

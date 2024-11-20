@@ -15,11 +15,12 @@ export default function TicketForm ({ onClose }: FormProps) {
     formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(validationSchema),
-    mode: "onChange",
+    mode: "onChange", // runs validation every time a field is modified 
   });
   const { createTicket, isAdding } = useCreateTicket();
 
   function onSubmitForm(data: any) {
+    
     const newTicket = {
       title: data.title,
       name: data.name,

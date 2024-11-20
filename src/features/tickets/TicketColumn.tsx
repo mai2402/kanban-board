@@ -13,7 +13,7 @@ export function TicketColumn({ title, index, count, tickets }: TicketColumnProps
     const { isOver, setNodeRef } = useDroppable({ id: index });
 
     const style = {
-        backgroundColor: isOver ? 'lightgreen' : 'lightblue',  // Optional highlight on hover
+        backgroundColor: isOver ? 'lightgreen' : 'lightblue', 
     };
     
     return (

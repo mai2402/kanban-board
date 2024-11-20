@@ -9,38 +9,39 @@ import TicketForm from "../features/tickets/TicketForm";
 import { useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import useModal from "../hooks/modal/useModal";
+import { COLUMNS_STATUSES } from "../constants";
+
+interface UpdateTicketStatusData {
+    ticketId: string;
+    newStatus: string;
+}
 
 
 function Kanbanboard() {
 
-    const { tickets } = useTickets();
-    const {openModal,isModalOpen,closeModal}=useModal()
+    const { tickets } = useTickets(); //fetch ticket data
+    const {openModal,isModalOpen,closeModal}=useModal() // modal custom hook for open & close functionalities
   
-    const{mutate:updateTicketStatus }= useUpdateTicketStatus()
-    const queryClient = useQueryClient();
+    const{mutate:updateTicketStatus }= useUpdateTicketStatus()// mutate function for ticket status update
+    const queryClient = useQueryClient(); // access query client 
     
-
-    const COLUMNS_STATUSES: { [key: string]: string } = {
-        unclaimed: "Unclaimed",
-        firstContact: "First Contact",
-        preparing: "Preparing Work Offer",
-        sent: "Sent to Therapist"
-    };
-
-
  
       function handleDragEnd({over: targetColumn, active: draggedTicket}: DragEndEvent) {
-        
+        // targetColumn :column where the ticket will be dropped
+        // darggedTicket : dragged ticket
         if (targetColumn?.id && draggedTicket.id) {
              // Update ticket status
+
         const ticketId = draggedTicket.id;
         const newStatus = targetColumn.id;
+
         const data ={
             ticketId,
             newStatus
         }
-        
+        // mutate function : send the data object to api function
         updateTicketStatus(data,{
+           
             onSuccess:()=>{
                 toast.success("ticket status has been updated successfully")
               queryClient.invalidateQueries({
@@ -48,7 +49,8 @@ function Kanbanboard() {
             })},
             onError:(err)=>{
                             toast.error(err.message)
-                         }
+                         },
+                         
         })
     }
         else return ;
@@ -70,6 +72,7 @@ function Kanbanboard() {
 
             <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCenter}>
                 <div className="flex justify-between items-start gap-4 overflow-x-auto px-4">
+                    {/* create a new array of filtered tickets based on their current status*/ }
                     {Object.keys(COLUMNS_STATUSES).map((columnStatus) => {
                         const filteredTickets = tickets?.filter(ticket => ticket.status === columnStatus);
 
