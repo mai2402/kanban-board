@@ -8,17 +8,17 @@ export default {
     theme : {
         extend: {
             colors: {
-                primary: '#d0deff', // Light Blue
-                secondary: '#e4ecff', // Very Light Blue
-                accent: '#ffd6e4', // Light Pink
-                background: '#ffffff', // White
-                text: '#d6e4ec', // Light Grayish Blue
-                alternativeBackground: '#ecffd6', // Light Green (Optional)
+                primary: '#d0deff', 
+                secondary: '#e4ecff', 
+                accent: '#ffd6e4', 
+                background: '#ffffff', 
+                text: '#d6e4ec', 
+                alternativeBackground: '#ecffd6', 
             }
         }
     },
     plugins : [
-        require('tailwind-scrollbar'), // Add this plugin
+        require('tailwind-scrollbar'), 
     plugin(function({ addUtilities }) {
       addUtilities({
         '.scrollbar-thin': { 'scrollbar-width': 'thin' },
