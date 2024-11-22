@@ -18,19 +18,6 @@ export default {
         }
     },
     plugins : [
-        require('tailwind-scrollbar'), 
-    plugin(function({ addUtilities }) {
-      addUtilities({
-        '.scrollbar-thin': { 'scrollbar-width': 'thin' },
-        '.scrollbar-thumb-blue-500': {
-          'scrollbar-color': '#4299e1 #ebf8ff',
-           'border-radius':'20px',
-        },
-        '.scrollbar-track-blue-100': {
-          'background-color': '#ebf8ff',
-          'border-radius':'20px',
-        },
-      });
-    }),
+       
     ]
 }

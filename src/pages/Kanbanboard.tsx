@@ -82,7 +82,7 @@ function Kanbanboard() {
       </Modal>
 
             <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCenter}>
-                <div className="flex justify-between items-start gap-4 overflow-x-auto px-4">
+                <div className="flex justify-between items-start gap-4 overflow-x-hidden px-4">
                     {/* create a new array of filtered tickets based on their current status*/ }
                     {Object.keys(COLUMNS_STATUSES).map((columnStatus) => {
                         const filteredTickets = tickets?.filter(ticket => ticket.status === columnStatus);

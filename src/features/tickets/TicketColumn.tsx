@@ -29,7 +29,7 @@ export function TicketColumn({ title, index, count, tickets }: TicketColumnProps
                 </div>
             </div>
 
-            <div className="w-full flex flex-col items-center space-y-2 rounded-lg px-2 overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-blue-500 h-96">
+            <div className="w-full flex flex-col items-center space-y-2 rounded-lg px-2 overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-blue-100 h-96">
                 {/* Map over the tickets array to render individual TicketCard */}
                 {tickets?.map((ticket) => (
                     <TicketCard key={ticket.id} ticket={ticket} index={ticket.id.toString()} />
