@@ -37,44 +37,57 @@ export default function TicketCard({ ticket, index }: TicketCardProps) {
                     {...attributes}
                     className="cursor-move bg-gray-100 p-2 rounded-t-md"
                     style={{
-                        cursor: isDragging ? "grabbing" : "grab", // Change cursor dynamically
+                        cursor: isDragging ? "grabbing" : "grab", 
                     }}
                 >
+                    <div className="flex flex-row justify-between items-center overflow-hidden">
                     <span className="text-lg font-semibold text-gray-800">{ticket.title}</span>
+                    <span className="text-sm font-sm text-gray-800">
+                        {ticket.age} yo
+                    </span>
+                    </div>
                 </div>
-
+                
                 {/* Card Content */}
-                <div className="flex flex-row justify-between items-center flex-grow mt-4">
-                    <div className="flex flex-col items-start">
-                        <div className="text-sm text-gray-600 text-center mb-4 truncate">
-                            {ticket.email}
-                        </div>
-                        <div className="text-sm text-gray-600 text-center mb-4 truncate">
-                            {ticket.phone}
-                        </div>
-                    </div>
-
-                    {/* Buttons (Outside Drag Listener Area) */}
-                    <div className="flex flex-col items-end space-y-2 flex-none">
-                        <button
-                            onClick={() => deleteTicket(ticketId)}
-                            className="p-2 rounded border border-gray-400 text-gray-600 hover:text-red-500 hover:border-red-500 transition-all duration-300"
+     <div className="grid grid-cols-[1fr_auto] items-center gap-4 mt-4">
+                     {/* Left Column: Email and Phone */}
+              <div className="flex flex-col items-start overflow-hidden">
+                      <div
+                            className="text-sm text-gray-600  mb-4 truncate w-48"
+                            title={ticket.email} /* Tooltip for full text */
                         >
-                            <FaTrashAlt size={18} />
-                        </button>
+                              {ticket.email}
+                        </div>
+                      <div
+                         className="text-sm text-gray-600  mb-4 truncate w-48"
+                           title={ticket.phone} /* Tooltip for full text */
+                         >
+                              {ticket.phone}
+                        </div>
+              </div>
 
-                        <button
-                            onClick={openModal}
-                            className="p-2 rounded border border-gray-400 text-gray-600 hover:text-green-500 hover:border-green-500 transition-all duration-300"
-                        >
-                            <FaEdit size={18} />
-                        </button>
-                    </div>
+                        {/* Right Column: Buttons */}
+                       <div className="flex flex-col items-end space-y-2">
+                             <button
+                                         onClick={() => deleteTicket(ticketId)}
+                                         className="p-2 rounded border border-gray-400 text-gray-600 hover:text-red-500 hover:border-red-500 transition-all duration-300"
+                              >
+                                  <FaTrashAlt size={18} />
+                              </button>
+                               <button
+                                          onClick={openModal}
+                                          className="p-2 rounded border border-gray-400 text-gray-600 hover:text-green-500 hover:border-green-500 transition-all duration-300"
+                                  >
+                                       <FaEdit size={18} />
+                                 </button>
+                       </div>
+                  </div>
+
                 </div>
-            </div>
+        
 
             {/* Modal */}
-            <Modal isOpen={isModalOpen} onClose={closeModal} title={`Edit Ticket ${ticketId}`}>
+            <Modal isOpen={isModalOpen} onClose={closeModal} title={`Edit Ticket #${ticketId}`}>
                 <EditTicketForm onClose={closeModal} ticket={ticket} />
             </Modal>
         </>

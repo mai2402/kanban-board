@@ -27,9 +27,20 @@ function Kanbanboard() {
     
  
       function handleDragEnd({over: targetColumn, active: draggedTicket}: DragEndEvent) {
+
+      
+      if (!(targetColumn?.id in COLUMNS_STATUSES)) {
+        console.log("Column is outside valid drag area.");
+        
+        targetColumn.id = "unclaimed";
+        
+        return;
+    }
         // targetColumn :column where the ticket will be dropped
         // darggedTicket : dragged ticket
+
         if (targetColumn?.id && draggedTicket.id) {
+
              // Update ticket status
 
         const ticketId = draggedTicket.id;
@@ -53,7 +64,7 @@ function Kanbanboard() {
                          
         })
     }
-        else return ;
+        else  console.log("i am outside the droppable area") ;
        
     }
 

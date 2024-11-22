@@ -37,9 +37,9 @@ export default function EditTicketForm({ticket,onClose}:FormProps) {
   return (   
     <form
       onSubmit={handleSubmit(onSubmitForm)}
-      className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md mx-auto mt-5 border"
+      className="bg-white shadow-lg rounded-lg  w-full max-w-md mx-auto mt-2 border"
     >
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Create a New Ticket</h1>
+      
     
       <div className="mb-4">
         <label htmlFor="title" className="block text-sm font-semibold text-gray-700">

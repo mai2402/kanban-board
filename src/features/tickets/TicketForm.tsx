@@ -35,9 +35,9 @@ export default function TicketForm ({ onClose }: FormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmitForm)}
-      className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md mx-auto mt-5 border"
+      className="bg-white shadow-lg rounded-2xl w-full max-w-md mx-auto mt-2 border"
     >
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Create a New Ticket</h1>
+      
     
       <div className="mb-4">
         <label htmlFor="title" className="block text-sm font-semibold text-gray-700">
@@ -92,7 +92,7 @@ export default function TicketForm ({ onClose }: FormProps) {
           type="text"
           id="email"
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-          {...register("email", { required: "This field is required" })}
+          {...register("email")}
         />
         {errors.email && (
           <span className="text-red-500 text-sm">{errors.email.message}</span>
@@ -107,7 +107,7 @@ export default function TicketForm ({ onClose }: FormProps) {
           type="text"
           id="phone"
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-          {...register("phone", { required: "This field is required" })}
+          {...register("phone")}
         />
         {errors.phone && (
           <span className="text-red-500 text-sm">{errors.phone.message}</span>
